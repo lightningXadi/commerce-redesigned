@@ -75,3 +75,12 @@ button {
   background: var(--sand);
   color: var(--espresso);
 }
+
+/* Nav link hover — CSS only, no JS needed */
+.nav-link {
+  color: var(--bark);
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: var(--espresso);
+}
