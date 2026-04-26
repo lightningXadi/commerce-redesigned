@@ -13,7 +13,7 @@ export async function Navbar() {
 
   return (
     <nav style={{ borderBottom: '1px solid var(--stone)', backgroundColor: 'var(--cream)' }} className="sticky top-0 z-40">
-      {/* Top announcement bar */}
+      {/* Announcement bar */}
       <div style={{ backgroundColor: 'var(--espresso)', color: 'var(--cream)' }} className="text-center py-2 text-xs tracking-widest uppercase">
         Free shipping on orders over $100
       </div>
@@ -27,23 +27,26 @@ export async function Navbar() {
           </Suspense>
         </div>
 
-        {/* Logo */}
+        {/* Logo + desktop links */}
         <div className="flex items-center gap-10">
-          <Link href="/" prefetch={true} className="flex items-center gap-3 group">
-            <div style={{ width: 32, height: 32, backgroundColor: 'var(--espresso)', borderRadius: 2 }} className="flex items-center justify-center flex-shrink-0">
+          <Link href="/" prefetch={true} className="flex items-center gap-3">
+            <div
+              className="flex items-center justify-center flex-shrink-0"
+              style={{ width: 32, height: 32, backgroundColor: 'var(--espresso)', borderRadius: 2 }}
+            >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M3 14L9 4L15 14H3Z" fill="var(--cream)" />
               </svg>
             </div>
             <span
-              className="font-serif-display text-xl tracking-wide hidden lg:block"
+              className="font-serif-display text-xl hidden lg:block"
               style={{ color: 'var(--espresso)', letterSpacing: '0.04em' }}
             >
               {SITE_NAME || "My Store"}
             </span>
           </Link>
 
-          {/* Desktop nav links */}
+          {/* Desktop nav links — no event handlers, use CSS hover */}
           {menu.length ? (
             <ul className="hidden gap-8 text-sm md:flex md:items-center">
               {menu.map((item: Menu) => (
@@ -51,10 +54,7 @@ export async function Navbar() {
                   <Link
                     href={item.path}
                     prefetch={true}
-                    className="transition-colors duration-200 uppercase tracking-widest text-xs font-medium"
-                    style={{ color: 'var(--bark)' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--espresso)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--bark)')}
+                    className="nav-link uppercase tracking-widest text-xs font-medium"
                   >
                     {item.title}
                   </Link>
